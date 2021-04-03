@@ -15,37 +15,24 @@ function computerPlay(){
 
 function playRound(playerSelection, computerSelection){
     let str;
-    let win = 0;
     if(playerSelection.localeCompare("rock")==0 && computerSelection.localeCompare("paper")==0){
         str = "you chose rock, comp chose paper, you lose!";
-        win = 0;
-
     }else if(playerSelection.localeCompare("rock")==0 && computerSelection.localeCompare("scissors")==0){
         str = "you chose rock, comp chose scissors, you win!";
-        win = 1;
-
     }else if(playerSelection.localeCompare("paper")==0 && computerSelection.localeCompare("scissors")==0){
         str = "you chose paper, comp chose scissors, you lose!";
-        win = 0;
-
     }else if(playerSelection.localeCompare("paper")==0 && computerSelection.localeCompare("rock")==0){
         str = "you chose paper, comp chose rock, you win!";
-        win = 1;
-
     }else if(playerSelection.localeCompare("scissors")==0 && computerSelection.localeCompare("paper")==0){
         str = "you chose scissors, comp chose paper, you win!";
-        win = 1;
-
     }else if(playerSelection.localeCompare("scissors")==0 && computerSelection.localeCompare("rock")==0){
         str = "you chose scissors, comp chose rock, you lose!";
-        win = 0;
-
     }else if(playerSelection.localeCompare(computerSelection)==0){
         str = "tie!";
-        win = -1;
     }
 
-    return win;
+    return str;
+
 }
 
 function game(){
@@ -55,26 +42,9 @@ function game(){
     return playRound(playerSelection, computerSelection);
 }
 
-
-const playerCount = document.createElement('p');
-playerCount.textContent = 0;
-let pCount = 0;
-let cCount = 0;
-
-document.getElementById("rock").addEventListener('click', () => {
-    if(playRound("rock",computerPlay())===1) ++pCount;
-    playerCount.textContent = `${pCount}`;
-});
-
-document.getElementById("paper").addEventListener('click', () => {
-    if(playRound("paper",computerPlay())===1) ++pCount;
-    playerCount.textContent = `${pCount}`;
-});
-
-document.getElementById("scissors").addEventListener('click', () => {
-    if(playRound("scissors",computerPlay())===1) ++pCount;
-    playerCount.textContent = `${pCount}`;
-});
+for(let i=0;i<5;i++){
+    console.log(game());
+}
 
 
-document.querySelector('div').appendChild(playerCount);
+
